@@ -5,7 +5,7 @@ Plugin URI: http://isabelcastillo.com/free-plugins/wp-family-tree-importer
 Description: Import WP Family Tree family member posts from a WordPress export file and keep family associations.
 Author: Isabel Castillo
 Author URI: http://isabelcastillo.com
-Version: 0.1-alpha-6
+Version: 0.1-alpha-7
 Text Domain: wp-family-tree-importer
 License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
@@ -87,7 +87,7 @@ class WP_Family_Tree_Importer extends WP_Importer {
 					$this->import_options();
 				break;
 			case 2:
-				check_admin_referer( 'import-wordpress' );
+				check_admin_referer( 'import-wpfamilytree' );
 				$this->fetch_attachments = ( ! empty( $_POST['fetch_attachments'] ) && $this->allow_fetch_attachments() );
 				$this->id = (int) $_POST['import_id'];
 				$file = get_attached_file( $this->id );
@@ -121,7 +121,7 @@ class WP_Family_Tree_Importer extends WP_Importer {
 
 		// update incorrect/missing information in the DB
 		$this->backfill_parents();
-		$this->backfill_attachment_urls();
+		$this->backfill_attachment_urls();// @todo what this does
 		$this->remap_featured_images();
 
 		// update family tree meta: gender, born, died, mother, father, spouse
@@ -266,7 +266,7 @@ class WP_Family_Tree_Importer extends WP_Importer {
 ?>
 
 <form action="<?php echo admin_url( 'admin.php?import=wpfamilytree&amp;step=2' ); ?>" method="post">
-	<?php wp_nonce_field( 'import-wordpress' ); ?>
+	<?php wp_nonce_field( 'import-wpfamilytree' ); ?>
 	<input type="hidden" name="import_id" value="<?php echo $this->id; ?>" />
 
 <?php if ( ! empty( $this->authors ) ) : ?>
