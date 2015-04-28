@@ -1134,7 +1134,7 @@ class WP_Family_Tree_Importer extends WP_Importer {
 		echo '<p>'.__( 'The import file must be a WordPress WXR (.xml) file. To get this file, go to the site that has the Family Tree posts which you want to export. On that site, go to Tools --> Export. Choose to export "Posts" and select the category of your Family Tree posts. Click "Download Export File". ', 'wp-family-tree-importer' ).'</p>';
 
 		echo '<p>'.__( 'Then, back on this page, click "Browse", import that file to upload, then click "Upload file and import".', 'wp-family-tree-importer' ).'</p>';
-		wp_import_upload_form( add_query_arg('step', 1) );
+		wp_import_upload_form( esc_url( add_query_arg('step', 1) ) );
 		echo '</div>';
 	}
 
