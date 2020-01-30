@@ -12,6 +12,16 @@ License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2
 
 // @todo what about attachments? do they work?
 
+/**
+
+@todo fix:
+
+[11-Apr-2019 20:23:51 UTC] PHP Notice:  screen_icon is <strong>deprecated</strong> since version 3.8.0 with no alternative available. in /var/www/html/wp-includes/functions.php on line 4332
+[11-Apr-2019 20:23:51 UTC] PHP Notice:  get_screen_icon is <strong>deprecated</strong> since version 3.8.0 with no alternative available. in /var/www/html/wp-includes/functions.php on line 4332
+
+*/
+
+
 if ( ! defined( 'WP_LOAD_IMPORTERS' ) )
 	return;
 
